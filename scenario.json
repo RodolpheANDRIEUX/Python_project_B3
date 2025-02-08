@@ -1,0 +1,53 @@
+{
+  "start": {
+    "dialog": [
+      {"text": "Bienvenue dans l'aventure...\n", "delay": 1},
+      {"text": "Vous vous réveillez dans une forêt sombre.\n>_", "delay": 3}
+    ],
+    "choices": {
+      "1": {
+        "text": "Explorer la forêt",
+        "next": "forest"
+      },
+      "2": {
+        "text": "Regarder autour de soi",
+        "next": "look_around"
+      },
+      "default": [
+        "Je ne comprends pas ce que vous dites.",
+        "Veuillez répéter.",
+        "vous le faites exprès ?",
+        "G A M E   O V E R",
+        "Ouais, c'etait une blague...          \nMais il me faut une réponse valide.",
+        "Toujours pas",
+        "Nope"
+      ]
+    }
+  },
+  "forest": {
+    "texts": [
+      {"text": "Vous avancez lentement à travers les arbres...", "delay": 2},
+      {"text": "Un murmure résonne : 'Qui va là ?'", "delay": 3}
+    ],
+    "choices": {
+      "start": {
+        "next": "start"
+      },
+      "2": {
+        "text": "Regarder autour de soi",
+        "next": "look_around"
+      },
+      "default": [
+        "Je ne comprends pas ce que vous dites.",
+        "Veuillez donner une réponse valide.",
+        "vous le faites exprès ?",
+        "G A M E   O V E R",
+        "Ouais, c'etait une blague...          \nMais il me faut une réponse valide.",
+        "Toujours pas",
+        "Nope"
+      ]
+    }
+  }
+
+
+}

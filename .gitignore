@@ -1,0 +1,115 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+.env/
+.venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Pyenv
+.python-version
+
+# pip cache
+__pypackages__/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Poetry
+poetry.lock
+poetry.toml
+
+# Celery stuff
+celerybeat-schedule
+*.celerybeat.db
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pyright
+.pyright/
+
+# Pyre
+.pyre/
+
+# Cython
+cython_debug/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Test & debugging logs
+.tox/
+.nox/
+pytest_cache/
+thumb.db
+Thumbs.db
+
+# Sphinx documentation
+docs/_build/
+docs/_generated/
+
+# PyCharm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+.settings/
+
+# macOS
+.DS_Store
+
+# Windows
+ehthumbs.db
+Desktop.ini
+
+# Logs & temp files
+logs/
+*.log
+*.out
+*.pid
+*.swp
+*.swo
+*.swn
