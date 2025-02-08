@@ -2,15 +2,15 @@
   "start": {
     "dialog": [
       {"text": "Bienvenue dans l'aventure...\n", "delay": 1},
-      {"text": "Vous vous réveillez dans une forêt sombre.\n>_", "delay": 3}
+      {"text": "Vous vous réveillez dans une forêt sombre.\n", "delay": 0}
     ],
     "choices": {
       "1": {
-        "text": "Explorer la forêt",
+        "text": "1 - Explorer la forêt",
         "next": "forest"
       },
       "2": {
-        "text": "Regarder autour de soi",
+        "text": "2 - Regarder autour de soi",
         "next": "look_around"
       },
       "default": [

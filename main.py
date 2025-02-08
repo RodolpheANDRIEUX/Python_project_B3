@@ -19,18 +19,18 @@ def playNode(node):
 
 def getChoice(node, i=0):
     choices = node.get("choices", {})
-    for choice in choices.items():
-        if isinstance(choice, dict) and "text" in choice:
-            print("{choice['text']}")
-    userChoice = input()
-    if userChoice not in node.get("choices", {}):
+    for key, value in choices.items():
+        if "text" in value:
+            print(f"{value['text']}")
+    userChoice = input("\n>_").strip().lower()
+    if userChoice not in choices:
         default = choices.get("default", [])
         say(default[i])
         print()
         if i+1 == len(default):
             i -= 1
         getChoice(node, i + 1)
-    return node.get("choices", {}).get(userChoice, {}).get("next")
+    return choices[userChoice].get("next")
 
 
 currentNode = "start"
