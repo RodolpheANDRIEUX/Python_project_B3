@@ -2,7 +2,7 @@
   "start": {
     "dialog": [
       {"text": "Bienvenue dans l'aventure...\n", "delay": 1},
-      {"text": "Vous vous réveillez dans une forêt sombre.\n", "delay": 0}
+      {"text": "Vous vous réveillez dans une forêt sombre.\n", "delay": 1}
     ],
     "choices": {
       "1": {
@@ -25,9 +25,9 @@
     }
   },
   "forest": {
-    "texts": [
-      {"text": "Vous avancez lentement à travers les arbres...", "delay": 2},
-      {"text": "Un murmure résonne : 'Qui va là ?'", "delay": 3}
+    "dialog": [
+      {"text": "Vous avancez lentement à travers les arbres...\n", "delay": 0},
+      {"text": "Un murmure résonne : 'Qui va là ?'\n", "delay": 1}
     ],
     "choices": {
       "start": {

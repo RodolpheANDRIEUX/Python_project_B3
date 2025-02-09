@@ -8,7 +8,7 @@ with open("scenario.json", "r", encoding="utf-8") as f:
 def say(text):
     for letter in text:
         print(letter, end="", flush=True)
-        time.sleep(0.02)
+        time.sleep(0.025)
 
 
 def playNode(node):
@@ -29,7 +29,7 @@ def getChoice(node, i=0):
         print()
         if i+1 == len(default):
             i -= 1
-        getChoice(node, i + 1)
+        return getChoice(node, i + 1)
     return choices[userChoice].get("next")
 
 
