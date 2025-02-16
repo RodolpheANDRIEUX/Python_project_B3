@@ -1,41 +1,9 @@
-import json
-import time
+import threading
+from reader import start_reader
+from web.app import start_web_server
 
-with open("scenario.json", "r", encoding="utf-8") as f:
-    scenario = json.load(f)
+if __name__ == "__main__":
+    web_thread = threading.Thread(target=start_web_server, daemon=True)
+    web_thread.start()
 
-
-def say(text):
-    for letter in text:
-        print(letter, end="", flush=True)
-        time.sleep(0.025)
-
-
-def playNode(node):
-    for line in node.get("dialog", []):
-        time.sleep(line["delay"])
-        say(line["text"])
-
-
-def getChoice(node, i=0):
-    choices = node.get("choices", {})
-    for key, value in choices.items():
-        if "text" in value:
-            print(f"{value['text']}")
-    userChoice = input("\n>_").strip().lower()
-    if userChoice not in choices:
-        default = choices.get("default", [])
-        say(default[i])
-        print()
-        if i+1 == len(default):
-            i -= 1
-        return getChoice(node, i + 1)
-    return choices[userChoice].get("next")
-
-
-currentNode = "start"
-
-while currentNode:
-    node = scenario.get(currentNode)
-    playNode(node)
-    currentNode = getChoice(node)
+    start_reader()

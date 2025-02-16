@@ -2,7 +2,7 @@
   "start": {
     "dialog": [
       {"text": "Bienvenue dans l'aventure...\n", "delay": 1},
-      {"text": "Vous vous réveillez dans une forêt sombre.\n", "delay": 1}
+      {"text": "Vous vous réveillez dans une <g>forêt<w> sombre.\n", "delay": 1}
     ],
     "choices": {
       "1": {
