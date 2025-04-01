@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const userInput = document.querySelector('#search');
     const form = document.querySelector('form');
 
+    // Variables pour gérer l'animation « machine à écrire »
+    let typingTimer = null;
+    let isAnimating = false; // Indique si on est actuellement en train d'animer le texte
+
     // Récupère l'index du serveur
     async function loadIndex() {
         try {
@@ -34,16 +38,29 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Fonction « machine à écrire » pour animer lettre par lettre
     function typeText(element, text, speed = 40, callback) {
         let i = 0;
-        element.textContent = ''; // On s'assure de vider le contenu avant l'animation
+        isAnimating = true;
+        element.textContent = '';  // On s'assure de vider le contenu avant l'animation
 
-        const timer = setInterval(() => {
+        typingTimer = setInterval(() => {
             element.textContent += text.charAt(i);
             i++;
             if (i >= text.length) {
-                clearInterval(timer);
+                clearInterval(typingTimer);
+                typingTimer = null;
+                isAnimating = false;
                 if (callback) callback();
             }
         }, speed);
+    }
+
+    // Permet de skipper directement l’animation en cours
+    function skipTextAnimation(element, fullText) {
+        if (typingTimer) {
+            clearInterval(typingTimer);
+            typingTimer = null;
+        }
+        isAnimating = false;
+        element.textContent = fullText;  // Affiche tout le texte d'un coup
     }
 
     function showMessage(message, callback) {
@@ -62,7 +79,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // On vérifie si la question "17" existe
             if (data['17']) {
-                data['17'].answer = dataElo.fide_elo;  // On met à jour la réponse
+                data['17'].answer = dataElo.fide_elo; // On met à jour la réponse
             }
         } catch (err) {
             console.error('Erreur en récupérant le FIDE_ELO :', err);
@@ -108,7 +125,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         data = await response.json();
 
         // 3) Mettre à jour la question #17 avec FIDE_ELO
-        //    (récupéré depuis /get_fide_elo qui appelle web/state.py)
         await updateAnswer17WithFIDE();
 
         // 4) Afficher la question
@@ -152,11 +168,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    // Gère l’appui sur la barre d’espace si la réponse attendue est vide
+    // Gère la barre d’espace
     document.addEventListener('keydown', async event => {
         if (event.code === 'Space' || event.key === ' ') {
+            // Empêche le scroll
+            event.preventDefault();
+
+            // 1) Si une animation est en cours, on la saute
+            if (isAnimating) {
+                skipTextAnimation(textElement, data[currentQuestion].text);
+                return;
+            }
+
+            // 2) Sinon, si la question attend une réponse vide, on passe directement à la suivante
             if (data && data[currentQuestion] && data[currentQuestion].answer.trim() === '') {
-                event.preventDefault(); // Empêche le scroll
                 currentQuestion++;
                 await saveIndex(currentQuestion);
                 showQuestion();
