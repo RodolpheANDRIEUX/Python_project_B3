@@ -9,6 +9,7 @@ COLORS = {
     "w": "\033[0m"
 }
 
+PLAYER = "Personne"
 
 with open("scenario.json", "r", encoding="utf-8") as f:
     scenario = json.load(f)
@@ -33,13 +34,23 @@ def playNode(node):
 
 
 def getChoice(node, i=0):
+    """might be an abomination"""
+    global PLAYER
     choices = node.get("choices", {})
+    print()
     for key, value in choices.items():
         if "text" in value:
             print(f"{value['text']}")
-    userChoice = input("\n>_").strip().lower()
+    userChoice = ''
+    while userChoice == '':
+        userChoice = input("\n>_").strip().lower()
     if userChoice not in choices:
         default = choices.get("default", [])
+        if len(default) == 1:
+            if default[0] == "name":
+                PLAYER = userChoice
+                return "story"
+            return default[0]
         say(default[i])
         print()
         if i + 1 == len(default):

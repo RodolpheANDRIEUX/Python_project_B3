@@ -1,0 +1,12 @@
+{
+  "1": {
+    "text": "Salut\nQuelle est la capitale de la France ?",
+    "answer": "Paris"
+  },
+
+  "2": {
+    "text": "Salut\nQuelle est la capitale de la autre ?",
+    "answer": "oui"
+  }
+
+}

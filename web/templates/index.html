@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma page HTML</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <section class="display">
+        <div class="dialog">
+            <p class="text"></p>
+        </div>
+        <img src="../static/img/pon/fight.png" alt="pon">
+    </section>
+    <form action="POST">
+        <input type="text" name="input" id="search" autofocus>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

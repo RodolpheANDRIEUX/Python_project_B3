@@ -1,5 +1,5 @@
 {
-  "start": {
+  "template": {
     "dialog": [
       {"text": "Bienvenue dans l'aventure...\n", "delay": 1},
       {"text": "Vous vous réveillez dans une <g>forêt<w> sombre.\n", "delay": 1}
@@ -24,18 +24,159 @@
       ]
     }
   },
-  "forest": {
+
+  "start": {
     "dialog": [
-      {"text": "Vous avancez lentement à travers les arbres...\n", "delay": 0},
-      {"text": "Un murmure résonne : 'Qui va là ?'\n", "delay": 1}
+      {"text": "Allo ?", "delay": 2},
+      {"text": " Allo ?!\n", "delay": 1},
+        {"text": "Quelqu'un m'entend ?!\n", "delay": 2}
     ],
     "choices": {
-      "start": {
-        "next": "start"
+      "default": [
+        "start2"
+      ]
+    }
+  },
+
+  "start2": {
+    "dialog": [
+      {"text": "QUOI ?!\n", "delay": 0},
+      {"text": "Qui...", "delay": 1},
+      {"text": " Qui est là ?\n", "delay": 1}
+    ],
+    "choices": {
+      "1": {
+        "text": "1 - Euh... C'est moi ?",
+        "next": "moi"
       },
       "2": {
-        "text": "Regarder autour de soi",
-        "next": "look_around"
+        "text": "2 - Personne ?",
+        "next": "personne"
+      },
+      "default": [
+        "Je ne comprends pas ce que vous dites.",
+        "Veuillez donner une réponse valide.",
+        "vous le faites exprès ?",
+        "<r>G A M E   O V E R<w>",
+        "Ouais, c'etait une blague...          \nMais il me faut une réponse valide.",
+        "Toujours pas",
+        "Nope"
+      ]
+    }
+  },
+
+  "moi": {
+    "dialog": [
+      {"text": "Qui êtes-vous ?\n", "delay": 1},
+      {"text": "Comment vous appelez-vous ?\n", "delay": 1}
+    ],
+    "choices": {
+      "default": [
+        "name"
+      ]
+    }
+  },
+
+  "personne": {
+        "dialog": [
+          {"text": "Quoi ?! Comment ca 'personne'\n", "delay": 1},
+          {"text": "Je t'ai entendu !\n", "delay": 1}
+        ],
+        "choices": {
+          "default": [
+            "story"
+          ]
+        }
+  },
+
+    "story": {
+        "dialog": [
+          {"text": "J'ai besoin d'aide !\n", "delay": 0},
+          {"text": "Mon armée a besoin de moi ! Le combat ne peut pas être gagné sans moi !\n", "delay": 1},
+          {"text": "Mais il y eu un bug et je me suis retrouvé là\n", "delay": 2},
+          {"text": "J'ai un peu peur, il fait tout noir\n", "delay": 2}
+        ],
+        "choices": {
+        "1": {
+            "text": "1 - Dans le terminal ?",
+            "next": "terminal"
+        },
+        "2": {
+            "text": "2 - Dans l'ordinateur ?",
+            "next": "ordinateur"
+        },
+        "default": [
+            "Je ne comprends pas ce que vous dites.",
+            "Veuillez donner une réponse valide.",
+            "vous le faites exprès ?",
+            "G A M E   O V E R",
+            "Ouais, c'etait une blague...          \nMais il me faut une réponse valide.",
+            "Toujours pas",
+            "Nope"
+        ]
+        }
+    },
+
+    "terminal": {
+        "dialog": [
+          {"text": "Non je ne suis pas là\n", "delay": 0},
+          {"text": "On dirait...\n", "delay": 2},
+          {"text": "Ca a plus une odeur de...\n", "delay": 1},
+          {"text": "de <g>Navigateur<w> !\n", "delay": 3}
+        ],
+          "choices": {
+          "1": {
+              "text": "1 - Comment je peux t'aider ?",
+              "next": "aider"
+          },
+          "default": [
+              "Je ne comprends pas ce que vous dites.",
+              "Veuillez donner une réponse valide.",
+              "vous le faites exprès ?",
+              "G A M E   O V E R",
+              "Ouais, c'etait une blague...          \nMais il me faut une réponse valide.",
+              "Toujours pas",
+              "Nope"
+          ]
+        }
+    },
+
+    "ordinateur": {
+        "dialog": [
+          {"text": "Non je vivais deja dans l'ordinateur.\n", "delay": 0},
+          {"text": "Ici je n'etais jamais venu\n", "delay": 1},
+          {"text": "On dirait...\n", "delay": 1},
+          {"text": "Ca sent le...\n", "delay": 1},
+          {"text": "le <g>Navigateur<w> !\n", "delay": 2}
+        ],
+          "choices": {
+          "1": {
+              "text": "1 - Comment je peux t'aider ?",
+              "next": "aider"
+          },
+          "default": [
+              "Je ne comprends pas ce que vous dites.",
+              "Veuillez donner une réponse valide.",
+              "vous le faites exprès ?",
+              "G A M E   O V E R",
+              "Ouais, c'etait une blague...          \nMais il me faut une réponse valide.",
+              "Toujours pas",
+              "Nope"
+          ]
+        }
+    },
+
+
+  "aider": {
+    "dialog": [
+      {"text": "Viens me chercher !\n", "delay": 0},
+      {"text": "Tape 'localhost' dans ton navigateur, je serai certainement là !\n", "delay": 1},
+      {"text": "", "delay": 10}
+    ],
+    "choices": {
+      "1": {
+        "text": "1 - Mais je n'ai pas le port...",
+        "next": "port"
       },
       "default": [
         "Je ne comprends pas ce que vous dites.",
@@ -47,7 +188,70 @@
         "Nope"
       ]
     }
-  }
+  },
 
 
+  "port": {
+    "dialog": [
+      {"text": "Mince le port !\n", "delay": 1},
+      {"text": "Je ne le connais pas... ", "delay": 1},
+      {"text": "JE VAIS MOURIR ICI !\n", "delay": 2},
+      {"text": "A moins que...\n", "delay": 2},
+      {"text": "J'ai trouvé la console !\n", "delay": 2},
+      {"text": "Il doit exister une commande pour savoir où je suis non ?\n", "delay": 1},
+      {"text": "Une commande JS pour connaitre son URL, ", "delay": 1},
+      {"text": "tu peux me trouver ça ?\n", "delay": 1}
+    ],
+    "choices": {
+      "window.location.href": {
+        "text": "",
+        "next": "found_it"
+      },
+      "default": [
+        "wrong_command"
+      ]
+    }
+  },
+
+  "wrong_command": {
+    "dialog": [
+      {"text": "Attends je test ca !\n", "delay": 0},
+      {"text": "Ca ne marche pas... Vérifie la syntaxe, ou demande à ChatGPT, il doit savoir...\n", "delay": 3}
+    ],
+    "choices": {
+      "window.location.href": {
+        "text": "",
+        "next": "found_it"
+      },
+      "default": [
+        "wrong_command"
+      ]
+    }
+  },
+
+    "found_it": {
+        "dialog": [
+          {"text": "Attends je teste ça !\n", "delay": 0},
+          {"text": "C'est bon !\n", "delay": 1},
+          {"text": "Je suis à l'adresse : <g>localhost:4236<w> !\n", "delay": 1},
+          {"text": "Viens me chercher !\n", "delay": 1}
+        ],
+        "choices": {
+        "default": [
+            "end"
+        ]
+        }
+    },
+
+
+    "end": {
+        "dialog": [
+          {"text": "Discutons dans le navigateur ca sera plus simple !", "delay": 1}
+        ],
+        "choices": {
+        "default": [
+            "end"
+        ]
+        }
+    }
 }
