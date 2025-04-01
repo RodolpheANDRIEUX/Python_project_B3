@@ -35,7 +35,7 @@ def playNode(node):
 def getChoice(node, i=0):
     """might be an abomination"""
     choices = node.get("choices", {})
-    print(state.FIDE_ELO)
+    print()
     for key, value in choices.items():
         if "text" in value:
             print(f"{value['text']}")
