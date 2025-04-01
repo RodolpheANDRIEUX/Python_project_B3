@@ -1,13 +1,111 @@
 {
   "1": {
-    "text": "Salut\nQuelle est la capitale de la France ?",
-    "answer": "Paris",
+    "text": "Tu m'as trouvé !",
+    "answer": "",
     "img": "../static/img/pon/happy.png"
   },
 
   "2": {
+    "text": "Je m'appelle e2 !",
+    "answer": "",
+    "img": "../static/img/pon/actually.png"
+  },
+
+  "3": {
+    "text": "Je ne suis pas censé etre dans le navigateur...",
+    "answer": "",
+    "img": "../static/img/pon/think.png"
+  },
+
+  "4": {
+    "text": "Mon armée m'attend. Le roi doit payer !",
+    "answer": "",
+    "img": "../static/img/pon/fight.png"
+  },
+
+  "5": {
+    "text": "Mais il faut d'abord que je sorte d'ici...",
+    "answer": "",
+    "img": "../static/img/pon/cringe.png"
+  },
+
+  "6": {
+    "text": "Tu vas pouvoir m'aider",
+    "answer": "",
+    "img": "../static/img/pon/happy.png"
+  },
+
+  "7": {
+    "text": "PROUVE QUE TU EST DIGNE DE M'AFFRONTER ET JE TE FERAI REVENIR DU ROYAUME DU WEB POUR UN COMBAT LEGENDAIRE !",
+    "answer": "",
+    "img": "../static/img/king/fight.png"
+  },
+
+  "8": {
+    "text": "Repond a ces questions et je pourrai te ramener a ton armée pour m'affronter !",
+    "answer": "",
+    "img": "../static/img/king/king.png"
+  },
+
+  "9": {
+    "text": "Première question ! Quelle est la capitale du Burkina Faso ?",
+    "answer": "",
+    "img": "../static/img/king/king.png"
+  },
+
+  "10": {
+    "text": "Euh... Tu sais ca toi ?",
+    "answer": "Ouagadougou",
+    "img": "../static/img/pon/cringe.png"
+  },
+
+  "11": {
+    "text": "TRICHEUR ! Tu es allé trouver la réponse sur internet !",
+    "answer": "",
+    "img": "../static/img/king/fight.png"
+  },
+
+  "12": {
+    "text": "Apres tout, nous sommes sur le web... J'aurais pu m'y attendre",
+    "answer": "",
+    "img": "../static/img/king/king.png"
+  },
+
+  "13": {
+    "text": "Je vais devoir trouver des question plus difficiles...",
+    "answer": "",
+    "img": "../static/img/king/king.png"
+  },
+
+  "14": {
+    "text": "OK ! J'ai chiffré la reponse en César ! La clé est la fin de mon nom et la réponse est KizwSivv",
+    "answer": "CaroKann",
+    "img": "../static/img/king/fight.png"
+  },
+
+  "15": {
+    "text": "Exact !",
+    "answer": "",
+    "img": "../static/img/king/king.png"
+  },
+
+  "16": {
+    "text": "Bien joué !",
+    "answer": "",
+    "img": "../static/img/pon/happy.png"
+  },
+
+  "17": {
+    "text": "Enfin, donne moi l'ELO FIDE de Carlsen en classique ! Je suis allé verifier sur internet moi aussi",
+    "answer": "",
+    "img": "../static/img/king/king.png"
+  },
+
+
+
+  "18": {
     "text": "EN GARDE !",
-    "answer": "oui",
+    "answer": "",
     "img": "../static/img/king/fight.png"
   }
 

@@ -1,9 +1,8 @@
 import time
 import tkinter as tk
-
 import pandas as pd
 from PIL import Image, ImageTk
-
+import state
 from chess.chess.game import Game
 from chess.chess.move import Move
 from chess.gui.board_view import BoardView
@@ -21,7 +20,10 @@ def notation_to_coord(move):
 class MainMenu(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Chess")
+        self.lift()
+        self.attributes('-topmost', True)
+        self.after(100, lambda: self.attributes('-topmost', False))
+        self.title("Le Roi contre " + state.PLAYER)
         self.background_color = '#312e2b'
         self.title_image = Image.open('chess/gui/Title.png')
         self.title_image = ImageTk.PhotoImage(self.title_image)

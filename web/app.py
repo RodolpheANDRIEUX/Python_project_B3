@@ -1,8 +1,9 @@
 import json
 import os
 from waitress import serve
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, request, session, render_template
 from chess.gui.main_menu import MainMenu
+import state
 
 
 def start_web_server():
@@ -22,12 +23,31 @@ def configure_routes(app):
             data = json.load(file)
         return jsonify(data)
 
+    @app.route('/get_index', methods=['GET'])
+    def get_index():
+        current_index = session.get('question_index', 1)
+        return jsonify({'currentIndex': current_index})
+
+    @app.route('/set_index', methods=['POST'])
+    def set_index():
+        data = request.json
+        new_index = data.get('index')
+        if new_index:
+            session['question_index'] = new_index
+        return jsonify({'status': 'ok', 'newIndex': session.get('question_index', 1)})
+
     @app.route('/end', methods=['POST'])
     def end_script():
         chess = MainMenu()
         chess.init_game(1)
         chess.mainloop()
+        return jsonify({'status': 'ok'})
+
+    @app.route('/get_fide_elo', methods=['GET'])
+    def get_fide_elo():
+        return jsonify({"fide_elo": state.FIDE_ELO})
 
 
 app = Flask(__name__)
+app.secret_key = "endives_au_jambon"
 configure_routes(app)

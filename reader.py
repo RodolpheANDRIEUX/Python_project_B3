@@ -1,5 +1,6 @@
 import json
 import time
+import state
 
 COLORS = {
     "r": "\033[31m",
@@ -8,8 +9,6 @@ COLORS = {
     "b": "\033[34m",
     "w": "\033[0m"
 }
-
-PLAYER = "Personne"
 
 with open("scenario.json", "r", encoding="utf-8") as f:
     scenario = json.load(f)
@@ -35,9 +34,8 @@ def playNode(node):
 
 def getChoice(node, i=0):
     """might be an abomination"""
-    global PLAYER
     choices = node.get("choices", {})
-    print()
+    print(state.FIDE_ELO)
     for key, value in choices.items():
         if "text" in value:
             print(f"{value['text']}")
@@ -48,7 +46,7 @@ def getChoice(node, i=0):
         default = choices.get("default", [])
         if len(default) == 1:
             if default[0] == "name":
-                PLAYER = userChoice
+                state.PLAYER = userChoice
                 return "story"
             return default[0]
         say(default[i])
