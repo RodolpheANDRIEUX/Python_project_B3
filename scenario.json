@@ -175,7 +175,7 @@
     ],
     "choices": {
       "1": {
-        "text": "1 - Mais je n'ai pas le port...",
+        "text": "1 - Mais... Je n'ai pas le port ! Il me faut le port !",
         "next": "port"
       },
       "default": [
