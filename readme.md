@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ## 🧪 Utilisation
 
-Exécutez simplement le projet :
+Exécutez simplement le projet DANS UN TERMINAL:
 
 ```bash
 python main.py
