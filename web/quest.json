@@ -1,12 +1,14 @@
 {
   "1": {
     "text": "Salut\nQuelle est la capitale de la France ?",
-    "answer": "Paris"
+    "answer": "Paris",
+    "img": "../static/img/pon/happy.png"
   },
 
   "2": {
-    "text": "Salut\nQuelle est la capitale de la autre ?",
-    "answer": "oui"
+    "text": "EN GARDE !",
+    "answer": "oui",
+    "img": "../static/img/king/fight.png"
   }
 
 }

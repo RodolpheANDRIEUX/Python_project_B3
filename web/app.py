@@ -2,6 +2,7 @@ import json
 import os
 from waitress import serve
 from flask import Flask, jsonify, render_template
+from chess.gui.main_menu import MainMenu
 
 
 def start_web_server():
@@ -20,6 +21,12 @@ def configure_routes(app):
         with open(json_path, "r", encoding="utf-8") as file:
             data = json.load(file)
         return jsonify(data)
+
+    @app.route('/end', methods=['POST'])
+    def end_script():
+        chess = MainMenu()
+        chess.init_game(1)
+        chess.mainloop()
 
 
 app = Flask(__name__)

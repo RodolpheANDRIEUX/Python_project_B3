@@ -1,31 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Retrieve the current question number from localStorage or default to 1.
     let currentQuestion = parseInt(localStorage.getItem('questionIndex'), 10) || 1;
-    let data = null; // Will hold the questions from /apijson
+    let data = null;
 
-    // Function to display the current question text in the .text element.
-    function showQuestion() {
-        const dialogText = document.querySelector('.text');
-        if (data[currentQuestion]) {
-            dialogText.textContent = data[currentQuestion].text;
-        } else {
-            dialogText.textContent = 'No more questions!';
-        }
+    const textElement = document.querySelector('.text');
+    const imgElement = document.querySelector('.display img');
+
+    function showMessage(message, callback) {
+        textElement.textContent = message;
+        setTimeout(callback, 2000);
     }
 
-    // Fetch the JSON containing all questions/answers.
+    function showQuestion() {
+        // Si la question n’existe pas => plus de questions
+        if (!data || !data[currentQuestion]) {
+            // Affiche un message
+            textElement.textContent = 'Il n’y a plus de question.';
+            imgElement.src = '';
+
+            // Lance une requête fetch vers /end (méthode POST)
+            fetch('/end', {
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(resData => {
+                    console.log('Réponse du serveur:', resData);
+                    // Vous pouvez éventuellement rediriger l’utilisateur, etc.
+                    // window.location.href = '/somewhere';
+                })
+                .catch(err => console.error('Erreur lors de l’appel à /end :', err));
+
+            return; // On arrête la fonction ici
+        }
+
+        // Sinon on continue normalement
+        textElement.textContent = data[currentQuestion].text;
+        imgElement.src = data[currentQuestion].img;
+    }
+
     fetch('/mise_en_place_d_une_API_a_l_aide_de_Flask')
         .then(response => response.json())
         .then(json => {
             data = json;
             showQuestion();
         })
-        .catch(err => {
-            console.error('Error fetching JSON:', err);
-            document.querySelector('.text').textContent = 'Error loading questions!';
+        .catch(error => {
+            textElement.textContent = 'Erreur de chargement !';
+            console.error(error);
         });
 
-    // Handle form submission: compare typed answer, move to next question if correct.
     const form = document.querySelector('form');
     form.addEventListener('submit', event => {
         event.preventDefault();
@@ -34,19 +56,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const answer = userInput.value.trim();
         userInput.value = '';
 
-        // If there's a question at currentQuestion, we check the answer.
-        if (data && data[currentQuestion]) {
-            const correctAnswer = data[currentQuestion].answer.trim();
-            if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
-                // Advance to the next question if correct.
+        if (!data || !data[currentQuestion]) {
+            textElement.textContent = 'Il n’y a plus de question.';
+            return;
+        }
+
+        const correctAnswer = data[currentQuestion].answer.trim();
+
+        if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
+            showMessage('Bonne réponse !', () => {
                 currentQuestion++;
                 localStorage.setItem('questionIndex', currentQuestion);
                 showQuestion();
-            } else {
-                alert('Incorrect! Try again.');
-            }
+            });
         } else {
-            alert('No more questions!');
+            showMessage('Mauvaise réponse, réessayez !', () => {
+                showQuestion();
+            });
         }
     });
 });

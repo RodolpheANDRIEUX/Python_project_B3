@@ -32,6 +32,8 @@ body {
     background-color: #ffffed;
     border: solid 2px black;
     border-radius: 20px;
+    font-size: 2rem;
+    padding: 20px;
     z-index: 10;
 }
 
